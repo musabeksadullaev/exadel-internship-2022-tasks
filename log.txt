@@ -1,0 +1,35 @@
+commit 24118dbef9ecf92732b0391b82b543b91f62bd21
+Merge: 1e14334 b467de7
+Author: musabeksadullaev <107423609+musabeksadullaev@users.noreply.github.com>
+Date:   Tue Jun 14 01:13:40 2022 +0500
+
+    Merge pull request #2 from musabeksadullaev/dev
+    
+    Merging dev to master
+
+commit b467de7159015b436e346fee17a3444ab540cfc2
+Merge: e250fe2 630c6f5
+Author: musabeksadullaev <107423609+musabeksadullaev@users.noreply.github.com>
+Date:   Tue Jun 14 01:09:57 2022 +0500
+
+    Merge pull request #1 from musabeksadullaev/musabeksadullaev-new_feature
+    
+    Added README.md for new feature branch
+
+commit 630c6f55d8ca6ebc01c729bea4e9e467d301388a
+Author: Musabek Sadullaev <musabeksadullayev@gmail.com>
+Date:   Tue Jun 14 01:07:43 2022 +0500
+
+    Added README.md for new feature branch
+
+commit e250fe291c76d17a24656f20def6b7b5a2d27776
+Author: Musabek Sadullaev <musabeksadullayev@gmail.com>
+Date:   Tue Jun 14 00:57:17 2022 +0500
+
+    Added test file for dev branch
+
+commit 1e1433421a23c2997ad07ce59f0a336d4bf38a7a
+Author: Musabek Sadullaev <musabeksadullayev@gmail.com>
+Date:   Tue Jun 14 00:55:24 2022 +0500
+
+    Initial commit - Added README for first task
