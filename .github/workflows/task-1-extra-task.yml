@@ -41,8 +41,8 @@ jobs:
 
     - run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
-    - run: echo $(( secrets.FAVORITE_DAY_OF_WEEK == 7 ))
-    - run: echo $(( secrets.FAVORITE_DAY_OF_WEEK == 8 ))
-    - run: echo $(( secrets.FAVORITE_DAY_OF_WEEK == 9 ))
+    - run: ([ secrets.FAVORITE_DAY_OF_WEEK -eq 7 ]; echo $((!$?)))
+    - run: ([ secrets.FAVORITE_DAY_OF_WEEK -eq 8 ]; echo $((!$?)))
+    - run: ([ secrets.FAVORITE_DAY_OF_WEEK -eq 9 ]; echo $((!$?)))
 
 
