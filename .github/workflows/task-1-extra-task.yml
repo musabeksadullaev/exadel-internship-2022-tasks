@@ -10,23 +10,30 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
+
     - uses: actions/checkout@master
       with:
         ref: master
+
     - run: ls -laXh .
     - run: cat ./log.txt
     - run: echo "Hello from $DEPLOY_VER commit"
+
+
   job_2:
     runs-on: ubuntu-latest
     needs: job_1
+
     env:
       MONTH: 9
       DAY__OF_THE_MONTH: 8
       ENV_VAR_NAME: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
+
     steps:
     - uses: actions/checkout@master
       with:
         ref: master
+
     - run: date
     - run: echo Day - $DAY__OF_THE_MONTH
     - run: echo Month - $MONTH
@@ -34,4 +41,9 @@ jobs:
 
     - run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
-    - run: echo $ENV_VAR_NAME
+    - run: secrets.FAVORITE_DAY_OF_WEEK == '7'
+    - run: secrets.FAVORITE_DAY_OF_WEEK == '8'
+    - run: secrets.FAVORITE_DAY_OF_WEEK == '9'
+
+
+
