@@ -7,18 +7,20 @@ There's two types of variables:
 2. Shell (aka session or terminal) variables (Variables that exists only in running shell instance)
 
 And variable names should meet requirements:
+- Can contain only Latin alpha-numeric symbols
 - Should start with Latin letters: `a-z` or `A-Z`
 - Can contain numbers: `0-9`
 - Can start with or contain underscore symbol: `_`
 
 
-## Examples of valid and invalid variable names
+### Examples of valid and invalid variable names
 |🟢Valid syntax🟢|🔴Invalid syntax🔴|
 |----------|----------|
 |AT|1ST_CHARACTER_IS_NUMBER|
 |TIME|SEPARATED-WITH-DASH-SYMBOL|
 |GLOBAL_ENVIRONMENT_VARIABLE|ТЕКСТ_НА_КИРИЛЛИЦЕ|
 |LOCAL_ENVIRONMENT_VARIABLE|MIX_OF_КИРИЛЛИЦА_AND-LATIN-SYMBOLS|
+|\_DASHED_ENVIRONMENT_VARIABLE|\*STARTING_AND_ENDING_WITH_NON_ALPHANUMERIC_SYMBOLS\*|
 
 ----
 
@@ -30,8 +32,9 @@ Secrets in GitHub can be created in:
 Project home page > Settings > Secrets > Actions > New repository secret
 ```
 
+---
 
-
+# Project result
 
 Resulting CI/CD file:
 ``` md
