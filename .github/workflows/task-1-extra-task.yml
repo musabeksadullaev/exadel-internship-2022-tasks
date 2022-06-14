@@ -34,7 +34,7 @@ jobs:
       - run: ls -laXh .
   
       # Print contents of log.txt in current directory
-      - run: cat ./log.txt
+      - run: cat ./Task1/log.txt
   
       # Print hash of commit
       - run: echo "Hello from $DEPLOY_VER commit"
