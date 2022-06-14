@@ -18,7 +18,7 @@ jobs:
     - run: echo "Hello from $DEPLOY_VER commit"
   job_2:
     runs-on: ubuntu-latest
-    if: always() && (needs.job_1.result == 'success')
+    if: needs.job_1.result == 'success'
     env:
       MONTH: 9
       DAY__OF_THE_MONTH: 8
