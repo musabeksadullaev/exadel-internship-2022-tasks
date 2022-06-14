@@ -38,7 +38,7 @@ jobs:
     - run: echo Month - $MONTH
     - run: echo Year - $YEAR
 
-    - run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
-      if: ${ secrets.FAVORITE_DAY_OF_WEEK } == 6
+    - if: ${{ secrets.FAVORITE_DAY_OF_WEEK != 6 }}
+      run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
 
