@@ -8,7 +8,7 @@ env:
 
 jobs:
   job-1:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
       - run: ls -laXh .
       - run: cat ./log.txt
