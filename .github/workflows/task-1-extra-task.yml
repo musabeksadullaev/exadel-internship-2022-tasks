@@ -3,7 +3,7 @@ name: "Extra task 1 - demo"
 on: [push]
 
 env:
-  DEPLOY_VER: $GITHUB_SHA
+  DEPLOY_VER: ${GITHUB_SHA}
   YEAR: 2018
 
 jobs:
