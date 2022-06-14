@@ -3,15 +3,7 @@ name: "Extra task 1 - demo"
 on: [push]
 
 env:
-  # DEPLOY_VER: $(git rev-parse --short HEAD)
-  DEPLOY_VER0: $(git rev-parse --short=4 ${{ github.sha }})
-  DEPLOY_VER1: ${{ github.sha }}
-  DEPLOY_VER2: ${{ $GITHUB_SHA }}
-  DEPLOY_VER3: ${ $GITHUB_SHA }
-  DEPLOY_VER4: ${$GITHUB_SHA}
-
-  DEPLOY_VER5: ${$GITHUB_SHA}
-  DEPLOY_VER6: ${{ github.sha }}
+  DEPLOY_VER: $(${{ github.sha }})
   YEAR: 2018
 
 
