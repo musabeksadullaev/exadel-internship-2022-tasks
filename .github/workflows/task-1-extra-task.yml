@@ -7,7 +7,7 @@ env:
   YEAR: 2018
 
 jobs:
-  job-1:
+  job_1:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -16,3 +16,17 @@ jobs:
     - run: ls -laXh .
     - run: cat ./log.txt
     - run: echo "Hello from $DEPLOY_VER commit"
+  job_2:
+    runs-on: ubuntu-latest
+    if: always() && (needs.job_1.result == 'success')
+    env:
+      MONTH: 9
+      DAY__OF_THE_MONTH: 8
+    steps:
+    - uses: actions/checkout@master
+      with:
+        ref: master
+    - run: date
+    - run: echo Day - $DAY__OF_THE_MONTH
+    - run: echo Month - $MONTH
+    - run: echo Year - $YEAR
