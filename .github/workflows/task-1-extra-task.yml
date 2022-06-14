@@ -32,3 +32,5 @@ jobs:
     - run: echo Year - $YEAR
 
     - run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
+    - run: echo ${{ secrets.FAVORITE_DAY_OF_WEEK }} > tmp.txt
+    - run: cat tmp.txt
