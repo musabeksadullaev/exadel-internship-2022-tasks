@@ -10,8 +10,9 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
-    - uses: musabeksadullaev/exadel-internship-2022-tasks@master
+    - uses: actions/checkout@master
+      with:
+        ref: master
     - run: ls -laXh .
     - run: cat ./log.txt
     - run: echo "Hello from ${DEPLOY_VER} commit"
-
