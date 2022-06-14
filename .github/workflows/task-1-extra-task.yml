@@ -41,9 +41,9 @@ jobs:
 
     - run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
-    - run: secrets.FAVORITE_DAY_OF_WEEK == '7'
-    - run: secrets.FAVORITE_DAY_OF_WEEK == '8'
-    - run: secrets.FAVORITE_DAY_OF_WEEK == '9'
+    - run: secrets.FAVORITE_DAY_OF_WEEK == '7' | grep 7
+    - run: secrets.FAVORITE_DAY_OF_WEEK == '8' | grep 8
+    - run: secrets.FAVORITE_DAY_OF_WEEK == '9' | grep 9
 
 
 
