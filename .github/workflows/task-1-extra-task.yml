@@ -1,0 +1,15 @@
+name: "Extra task 1 - demo"
+
+on: [push]
+
+env:
+  DEPLOY_VER: $GITHUB_SHA
+  YEAR: 2018
+
+jobs:
+  job-1:
+    runs-on: ubuntu-1604
+    steps:
+      - run: ls -laXh .
+      - run: cat ./log.txt
+      - run: echo "Hello from ${DEPLOY_VER} commit"
