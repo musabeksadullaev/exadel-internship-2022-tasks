@@ -4,6 +4,7 @@ on: [push]
 
 env:
   DEPLOY_VER: $(${{ github.sha }})
+  DEPLOY_VER2: ${{ github.sha }}
   YEAR: 2018
 
 
