@@ -1,44 +1,69 @@
+# Name of pipeline
 name: "Extra task 1 - demo"
 
+# Define when to run this pipeline
 on: [push]
 
+# Environment variables (Global)
 env:
+  # One variable's value can be assigned to another variable's value
   DEPLOY_VER: ${{ github.sha }}
+
+  # Static variable
   YEAR: 2018
 
+
+# Jobs to run when pipeline started
 jobs:
+
+  # Single job can contain single or multiple steps. Each step will do some operation or run command in target system
   job_1:
+
+    # Target system where job will be runned
     runs-on: ubuntu-latest
+
+    # List of steps/actions
     steps:
 
-    - uses: actions/checkout@master
-      with:
-        ref: master
-
-    - run: ls -laXh .
-    - run: cat ./log.txt
-    - run: echo "Hello from $DEPLOY_VER commit"
+      # Checkout to master branch
+      - uses: actions/checkout@master  # Actions are predefined commands that make easier to work with pipelines
+        with:  # Arguments for actions
+          ref: master
+  
+      # Print contents of current directory (and repository)
+      - run: ls -laXh .
+  
+      # Print contents of log.txt in current directory
+      - run: cat ./log.txt
+  
+      # Print hash of commit
+      - run: echo "Hello from $DEPLOY_VER commit"
 
 
   job_2:
+
     runs-on: ubuntu-latest
+
+    # One job can wait another for successful exit
     needs: job_1
 
+    # Environment variables (Job only)
     env:
       MONTH: 9
       DAY__OF_THE_MONTH: 8
-      FAVORITE_DAY_OF_WEEK: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
+      FAVORITE_DAY_OF_WEEK: ${{ secrets.FAVORITE_DAY_OF_WEEK }}  # Secrets can be added/modified/deleted in project settings page
 
     steps:
-    - uses: actions/checkout@master
-      with:
-        ref: master
 
-    - run: date
-    - run: echo Day - $DAY__OF_THE_MONTH
-    - run: echo Month - $MONTH
-    - run: echo Year - $YEAR
-
-    - run: echo Favorite day of week - ${{ env.FAVORITE_DAY_OF_WEEK }}
-
-
+      # Checkout to master branch
+      - uses: actions/checkout@master
+        with:
+          ref: master
+  
+      - run: date  # Display date
+  
+      - run: echo Day - $DAY__OF_THE_MONTH  # Display DAY__OF_THE_MONTH variable value
+      - run: echo Month - $MONTH  # Display MONTH variable value
+      - run: echo Year - $YEAR  # Display YEAR variable value
+  
+      - run: echo Favorite day of week - ${{ env.FAVORITE_DAY_OF_WEEK }}  # Secrets will not be displayed (Because they're secret)
