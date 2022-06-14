@@ -28,6 +28,7 @@ jobs:
       MONTH: 9
       DAY__OF_THE_MONTH: 8
       ENV_VAR_NAME: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
+      SUPER_SECRET: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
     steps:
     - uses: actions/checkout@master
@@ -41,8 +42,6 @@ jobs:
 
     - run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
-    - run: ([ secrets.FAVORITE_DAY_OF_WEEK -eq 7 ]; echo $((!$?)))
-    - run: ([ secrets.FAVORITE_DAY_OF_WEEK -eq 8 ]; echo $((!$?)))
-    - run: ([ secrets.FAVORITE_DAY_OF_WEEK -eq 9 ]; echo $((!$?)))
+    - run: printf ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
 
