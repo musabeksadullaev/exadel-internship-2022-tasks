@@ -39,11 +39,6 @@ jobs:
     - run: echo Month - $MONTH
     - run: echo Year - $YEAR
 
-    - if: ${{ env.FAVORITE_DAY_OF_WEEK == 6 }}
-      # run: echo Favorite day of week - ${{ env.FAVORITE_DAY_OF_WEEK }}
-      run: echo Favorite day of week - 6
-
-    - if: ${{ env.FAVORITE_DAY_OF_WEEK != 6 }}
-      run: echo Favorite day of week - not 6
+    - run: echo Favorite day of week - ${{ env.FAVORITE_DAY_OF_WEEK }}
 
 
