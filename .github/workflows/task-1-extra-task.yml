@@ -27,6 +27,7 @@ jobs:
     env:
       MONTH: 9
       DAY__OF_THE_MONTH: 8
+      FAVORITE_DAY_OF_WEEK: ${{ secrets.FAVORITE_DAY_OF_WEEK }}
 
     steps:
     - uses: actions/checkout@master
@@ -38,7 +39,11 @@ jobs:
     - run: echo Month - $MONTH
     - run: echo Year - $YEAR
 
-    - if: ${{ secrets.FAVORITE_DAY_OF_WEEK != 6 }}
-      run: echo Favorite day of week - ${{ secrets.FAVORITE_DAY_OF_WEEK }}
+    - if: ${{ FAVORITE_DAY_OF_WEEK == 6 }}
+      # run: echo Favorite day of week - ${{ FAVORITE_DAY_OF_WEEK }}
+      run: echo Favorite day of week - 6
+
+    - if: ${{ FAVORITE_DAY_OF_WEEK != 6 }}
+      run: echo Favorite day of week - not 6
 
 
