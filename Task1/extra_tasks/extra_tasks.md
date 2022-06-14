@@ -36,7 +36,7 @@ Project home page > Settings > Secrets > Actions > New repository secret
 
 # Project result
 
-Resulting CI/CD file:
+Resulting CI/CD file (file can be found in `.github/workflows/task-1-extra-task.yml`):
 ``` md
 # Name of pipeline
 name: "Extra task 1 - demo"
