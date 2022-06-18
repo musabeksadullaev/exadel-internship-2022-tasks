@@ -3,8 +3,6 @@
 > These commands used when completing first task.
 > I will use this README when I forgot some commands
 
-<br>
-<br>
 ### Clone remote repository
 ``` bash
 git clone https://github.com/foobar/baz
