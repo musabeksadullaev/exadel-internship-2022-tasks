@@ -2,4 +2,4 @@
 
 Tasks:
 1. :green_circle: [Task 1](Task1)
-2. :yellow_circle: [Task 2](Task2)
+2. :green_circle: [Task 2](Task2)

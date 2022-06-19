@@ -23,13 +23,12 @@
 - Created two **subnets** with following settings attached to previously created VPC:
   - **First subnet**:
     - Availability zone (AZ): `us-east-1a`
-    - CIDR: `10.0.0.1/24`
+    - CIDR: `10.0.1.0/24`
   - **Second subnet**:
     - Availability zone (AZ): `us-east-1a`
-    - CIDR: `10.0.0.2/24`
-- Created two **Internet Gateway** attached to VPCs created at first step
-- Leased two **Elastic IPs** from AWS IP pool:
-  - `44.207.96.49`
+    - CIDR: `10.0.2.0/24`
+- Created two **Internet Gateways** attached to VPCs created at first step
+- Leased one **Elastic IPs** from AWS IP pool:
   - `52.73.170.146`
 - Created one **Peering connection** with following settings:
   - Requester VPC: **task-2-extra-2**
