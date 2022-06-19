@@ -3,8 +3,7 @@
 
 ### Infrastructure
 
-PM / DM me to check created AWS infrastructure
-[Add some image here (With preview)](https://exadel-tasks.s3.amazonaws.com/2/extra/screencapture-52-22-139-132-info-html-2022-06-18-18_53_34.png)
+:speech_balloon: PM / DM me to check created AWS infrastructure
 
 
 ### Task details
@@ -59,13 +58,16 @@ PM / DM me to check created AWS infrastructure
 | TCP | HTTPS | 443 | 0.0.0.0/0 | Make available to connect to nginx web-server port 443 |
 
 
+---
+
 
 ## Task (Extra 1, Sub-task 2)
+> Task: Install nginx with script and generate webpage that contains "Hello World" text and system information
 
-> The following Bash script will update installed packages, install nginx and generate file with 'Hello world' and system info to specified location\
-> Open http://52.73.170.146/info.html to see script result
 
----
+> :link: Open http://52.73.170.146/info.html to see script result
+
+> The following Bash script will update installed packages, install nginx and generate file with 'Hello world' and system info to specified location
 
 ``` shell
 # Stop script when some step is failed
@@ -216,6 +218,12 @@ printf "\n#####################################################\n"
 
 
 ## Task (Extra 1, Sub-task 3)
+
+> Task: Install nginx without ssh connection
+
+With Session manager you can directly connect to EC2 instance without SSH.
+
+I followed next steps to get direct access to console of EC2 instance.
 
 
 - Created IAM role:

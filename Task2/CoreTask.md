@@ -2,12 +2,12 @@
 
 ## Task 1 (Mandatory)
 ### Result page
-:link: http://52.73.170.146/info.html
+:globe_with_meridians: http://52.73.170.146/info.html
 
 
-### Infrastructure
+<!-- ### Infrastructure -->
 
-:speech_balloon: PM / DM me to check created AWS infrastructure
+<!-- :speech_balloon: PM / DM me to check created AWS infrastructure -->
 
 
 ### Task details
