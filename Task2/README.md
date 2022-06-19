@@ -4,7 +4,7 @@
 
 > :green_circle: Completed: `yes`
 
-> :alarm_clock: Completed time: `N/A`
+> :alarm_clock: Completed time: `19/06/2022 @ 11:00 PM`
 
 ---
 
