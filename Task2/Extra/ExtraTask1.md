@@ -1,23 +1,25 @@
 # Task 2 (Clouds)
 ## Task (Extra 1, Sub-task 1)
+### Result page
+:globe_with_meridians: http://52.73.170.146/info.html
 
-### Infrastructure
+<!-- ### Infrastructure -->
 
-:speech_balloon: PM / DM me to check created AWS infrastructure
+<!-- :speech_balloon: PM / DM me to check created AWS infrastructure -->
 
 
 ### Task details
 
 > Ping and SSH connections between **two servers** is working\
-  Ping and SSH connections between **client and server** is working
+  Ping and SSH connections between **second server and client** is working
 
 - Created two **VPCs** with following settings:
   - **First VPC**:
-    - Name: **task-2-extra-2**
-    - CIDR: `10.0.1.0/24` (Max. 255 IPs)
-  - **Second VPC**:
     - Name: **task-2-extra-1**
-    - CIDR: `10.0.2.0/24` (Max. 255 IPs)
+    - CIDR: `10.0.1.0/24` (Max. 255 IPs, 10.0.1.1-10.0.1.255)
+  - **Second VPC**:
+    - Name: **task-2-extra-2**
+    - CIDR: `10.0.2.0/24` (Max. 255 IPs, 10.0.2.1-10.0.2.255)
 - Created two **subnets** with following settings attached to previously created VPC:
   - **First subnet**:
     - Availability zone (AZ): `us-east-1a`
@@ -48,7 +50,18 @@
         - Target: Internet gateway for extra 2nd VPC
       - Destination: `10.0.1.0/0`
         - Target: Peering connection created before
-- Created **security groups** with following rules:
+- Created two **EC2 instances** in different VPC without auto assigning public IP with following Elastic IPs:
+  - [\<No Elastic IP\> / 10.0.1.195](http://10.0.1.195/) (First EC2 instance, Works on **Amazon Linux 2**)
+  - [52.22.139.132 / 10.0.2.206](http://52.22.139.132/) (Second EC2 instance, Works on **Ubuntu 22.04**)
+
+- Created **security group** for **first** EC2 instance with following rules:
+
+| Protocol (L4) | Protocol (L7) | Port | Source IP | Description |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| UDP | ICMP | 1-65535 | 10.0.2.206/32 | To allow ping |
+| TCP | SSH | 22 | 10.0.2.206/32 | Make SSH clients able to connect to instance |
+
+- Created **security group** for **second** EC2 instance with following rules:
 
 | Protocol (L4) | Protocol (L7) | Port | Source IP | Description |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
@@ -70,6 +83,8 @@
 > The following Bash script will update installed packages, install nginx and generate file with 'Hello world' and system info to specified location
 
 ``` shell
+#!/bin/bash
+
 # Stop script when some step is failed
 set -e
 
@@ -238,3 +253,6 @@ I followed next steps to get direct access to console of EC2 instance.
 - After waiting and refreshing page you see EC2 instance that you've changed IAM Role
 - Select it (with radio button in left side) and press **Start session**
 - After connecting to EC2 instance type `sudo su root` to get access to root user of this EC2 instance
+
+
+Also you can pass bash script when creating EC2 instance to `userdata` field
