@@ -163,16 +163,16 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update -y
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-sudo groupadd docker
-sudo usermod -aG docker ubuntu
-
-sudo newgrp docker
-
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
 sudo systemctl start docker.service
 sudo systemctl start containerd.service
+
+sudo groupadd docker
+sudo usermod -aG docker ubuntu
+
+sudo newgrp docker
 
 EOL
 
