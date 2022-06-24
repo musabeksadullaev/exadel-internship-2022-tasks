@@ -2,7 +2,7 @@
 
 ## Task 1 (Mandatory)
 ### Result page
-:globe_with_meridians: http://54.167.218.32/info.html
+:globe_with_meridians: http://52.204.31.76/info.html
 
 
 ### Task details
