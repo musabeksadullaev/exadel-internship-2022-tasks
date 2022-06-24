@@ -8,7 +8,7 @@
 
 ---
 
-### :link: [Task 1 (Mandatory)](./CoreTask.md)
+### :link: [Task 1 (Mandatory)](./Core/)
 
 ### :link: [Task 2 (Extra, 1)](./Extra/ExtraTask1.md)
 

@@ -11,6 +11,6 @@
 
 ---
 
-### :link: [Mandatory Task](./Mandatory)
+### :link: [Core Task](./Core)
 
 ### :link: [Extra Task](./Extra)
