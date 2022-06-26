@@ -19,8 +19,8 @@ Step 8:
   - Allow Squid proxy server to receive any connections ([variables.tf:176](./variables.tf#L176))
   - Restart Squid proxy server to use new configuration
 - CentOS server:
-  - Disable IPv6
-  - Make yum package manager in CentOS server to use proxy ([main.tf:176](./main.tf#L270))
+  - Disable IPv6 ([main.tf:263](./main.tf#L263))
+  - Make yum package manager in CentOS server to use proxy ([main.tf:270](./main.tf#L270))
   - Update and upgrade packages
   - Install nginx package
   - Create file with "Hello world" text
