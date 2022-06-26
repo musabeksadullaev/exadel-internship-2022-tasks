@@ -16,7 +16,7 @@ Step 1-7:
 Step 8:
 - Ubuntu server
   - Install [Squid proxy server](http://www.squid-cache.org/)
-  - Allow Squid proxy server to receive any connections ([variables.tf:176](./variables.tf#176))
+  - Allow Squid proxy server to receive any connections ([variables.tf:176](./variables.tf#L176))
   - Restart Squid proxy server to use new configuration
 - CentOS server:
   - Disable IPv6
