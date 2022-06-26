@@ -1,4 +1,4 @@
-user@user-PC:~/Desktop/exadel/exadel-tasks/exadel-internship-2022-tasks/Task3/Extra$ terraform plan
+$ terraform plan
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -75,7 +75,7 @@ Terraform will perform the following actions:
           + "Payer" = "exadel-tasks"
         }
       + tenancy                              = (known after apply)
-      + user_data                            = "e527d463dfe223629a77b52282c6f223ef699cea"
+      + user_data                            = "7eac93cd093e85f0b71a0ac8319a583932893d01"
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
@@ -152,7 +152,7 @@ Terraform will perform the following actions:
 
   # aws_instance.task_3_vm_2 will be created
   + resource "aws_instance" "task_3_vm_2" {
-      + ami                                  = "ami-0cff7528ff583bf9a"
+      + ami                                  = "ami-00e87074e52e6c9f9"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = false
       + availability_zone                    = (known after apply)
@@ -263,7 +263,7 @@ Terraform will perform the following actions:
           + kms_key_id            = (known after apply)
           + throughput            = (known after apply)
           + volume_id             = (known after apply)
-          + volume_size           = 8
+          + volume_size           = 15
           + volume_type           = (known after apply)
         }
     }
@@ -400,6 +400,19 @@ Terraform will perform the following actions:
               + self             = false
               + to_port          = 80
             },
+          + {
+              + cidr_blocks      = [
+                  + "10.0.10.0/24",
+                ]
+              + description      = ""
+              + from_port        = 3128
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 3128
+            },
         ]
       + name                   = "task_3_vpc_sg_vm_1"
       + name_prefix            = (known after apply)
@@ -438,9 +451,7 @@ Terraform will perform the following actions:
       + id                     = (known after apply)
       + ingress                = [
           + {
-              + cidr_blocks      = [
-                  + "10.0.10.0/24",
-                ]
+              + cidr_blocks      = (known after apply)
               + description      = ""
               + from_port        = -1
               + ipv6_cidr_blocks = []
@@ -451,9 +462,7 @@ Terraform will perform the following actions:
               + to_port          = -1
             },
           + {
-              + cidr_blocks      = [
-                  + "10.0.10.0/24",
-                ]
+              + cidr_blocks      = (known after apply)
               + description      = ""
               + from_port        = 22
               + ipv6_cidr_blocks = []
@@ -464,9 +473,7 @@ Terraform will perform the following actions:
               + to_port          = 22
             },
           + {
-              + cidr_blocks      = [
-                  + "10.0.10.0/24",
-                ]
+              + cidr_blocks      = (known after apply)
               + description      = ""
               + from_port        = 443
               + ipv6_cidr_blocks = []
@@ -477,9 +484,7 @@ Terraform will perform the following actions:
               + to_port          = 443
             },
           + {
-              + cidr_blocks      = [
-                  + "10.0.10.0/24",
-                ]
+              + cidr_blocks      = (known after apply)
               + description      = ""
               + from_port        = 80
               + ipv6_cidr_blocks = []
@@ -573,6 +578,8 @@ Changes to Outputs:
         ],
     ]
 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+
+$ 

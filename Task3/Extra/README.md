@@ -15,13 +15,14 @@
 ### Commands
 
 ``` bash
+# TODO: Remove before
 # Export AWS credentials
-export AWS_SECRET_ACCESS_KEY="..."
-export AWS_ACCESS_KEY_ID="..."
+export AWS_SECRET_ACCESS_KEY="aA4Lg9ApTWGBTiYZaJtzPnaTHJIIY8z1L99Fwi2p"
+export AWS_ACCESS_KEY_ID="AKIAW2UILN5N3D2RGKHO"
 
 # AMI IDs for EC2 instance
 export TF_VAR_VM_1_AMI_ID="ami-052efd3df9dad4825"
-export TF_VAR_VM_2_AMI_ID="ami-0cff7528ff583bf9a"
+export TF_VAR_VM_2_AMI_ID="ami-00e87074e52e6c9f9"
 
 # Download dependencies and install providers
 terraform init
