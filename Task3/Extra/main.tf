@@ -17,78 +17,78 @@ provider "aws" {
 
 
 # - VPC -----------------------------------------
-resource "aws_vpc" "task_3_vpc" {
+resource "aws_vpc" "task_3_extra_vpc" {
   cidr_block      = "10.0.10.0/24"
 
   tags = {
-    Name          = "Task-3-VPC"
+    Name          = "Task-3-Extra-VPC"
     Payer         = "exadel-tasks"
   }
 }
 
 
 # - Subnet --------------------------------------
-resource "aws_subnet" "task_3_vpc_subnet_main" {
-  vpc_id          = aws_vpc.task_3_vpc.id
+resource "aws_subnet" "task_3_extra_vpc_subnet_main" {
+  vpc_id          = aws_vpc.task_3_extra_vpc.id
   cidr_block      = "10.0.10.0/24"
 
   tags = {
-    Name          = "Task-3-VPC-Subnet-main"
+    Name          = "Task-3-Extra-VPC-Subnet-main"
     Payer         = "exadel-tasks"
   }
 }
 
 
 # - Elastic IP ----------------------------------
-resource "aws_eip" "task_3_vm_1_eip_1" {
-  instance        = aws_instance.task_3_vm_1.id
+resource "aws_eip" "task_3_extra_vm_1_eip_1" {
+  instance        = aws_instance.task_3_extra_vm_1.id
   vpc             = true
 
   tags = {
-    Name          = "task-3-vm-1"
+    Name          = "task-3-extra-vm-1"
     Payer         = "exadel-tasks"
   }
 }
 
 
 # - Route table ---------------------------------
-resource "aws_route_table" "task_3_route_table_1" {
-  vpc_id          = aws_vpc.task_3_vpc.id
+resource "aws_route_table" "task_3_extra_route_table_1" {
+  vpc_id          = aws_vpc.task_3_extra_vpc.id
 
   route {
     cidr_block    = "0.0.0.0/0"
-    gateway_id    = aws_internet_gateway.task_3_igw_1.id
+    gateway_id    = aws_internet_gateway.task_3_extra_igw_1.id
   }
 
   tags = {
-    Name          = "task-3-route-table-1"
+    Name          = "task-3-extra-route-table-1"
     Payer         = "exadel-tasks"
   }
 }
 
 # - Main route table ---------------------------------
-resource "aws_main_route_table_association" "task_3_vpc_main_route_table" {
-  vpc_id          = aws_vpc.task_3_vpc.id
-  route_table_id  = aws_route_table.task_3_route_table_1.id
+resource "aws_main_route_table_association" "task_3_extra_vpc_main_route_table" {
+  vpc_id          = aws_vpc.task_3_extra_vpc.id
+  route_table_id  = aws_route_table.task_3_extra_route_table_1.id
 }
 
 
 # - Internet gateway ----------------------------
-resource "aws_internet_gateway" "task_3_igw_1" {
-  vpc_id          = aws_vpc.task_3_vpc.id
+resource "aws_internet_gateway" "task_3_extra_igw_1" {
+  vpc_id          = aws_vpc.task_3_extra_vpc.id
 
   tags = {
-    Name          = "task-3-vm-1"
+    Name          = "task-3-extra-vm-1"
     Payer         = "exadel-tasks"
   }
 }
 
 
 # - Security group --------------------------------
-resource "aws_security_group" "task_3_vpc_sg_vm_1" {
-  name            = "task_3_vpc_sg_vm_1"
-  description     = "SG for VM 1"
-  vpc_id          = aws_vpc.task_3_vpc.id
+resource "aws_security_group" "task_3_extra_vpc_sg_vm_1" {
+  name            = "task_3_extra_vpc_sg_vm_1"
+  description     = "SG for VM 1 (Extra)"
+  vpc_id          = aws_vpc.task_3_extra_vpc.id
 
   ingress {
     from_port     = 22
@@ -127,7 +127,7 @@ resource "aws_security_group" "task_3_vpc_sg_vm_1" {
     to_port       = 3128
     protocol      = "tcp"
 
-    cidr_blocks   = [aws_subnet.task_3_vpc_subnet_main.cidr_block]
+    cidr_blocks   = [aws_subnet.task_3_extra_vpc_subnet_main.cidr_block]
   }
 
   egress {
@@ -144,17 +144,17 @@ resource "aws_security_group" "task_3_vpc_sg_vm_1" {
   }
 }
 
-resource "aws_security_group" "task_3_vpc_sg_vm_2" {
-  name            = "task_3_vpc_sg_vm_2"
-  description     = "SG for VM 2"
-  vpc_id          = aws_vpc.task_3_vpc.id
+resource "aws_security_group" "task_3_extra_vpc_sg_vm_2" {
+  name            = "task_3_extra_vpc_sg_vm_2"
+  description     = "SG for VM 2 (Extra)"
+  vpc_id          = aws_vpc.task_3_extra_vpc.id
 
   ingress {
     from_port         = 22
     to_port           = 22
     protocol          = "tcp"
 
-    cidr_blocks       = ["${aws_instance.task_3_vm_1.private_ip}/32"]
+    cidr_blocks       = ["${aws_instance.task_3_extra_vm_1.private_ip}/32"]
   }
 
   ingress {
@@ -162,7 +162,7 @@ resource "aws_security_group" "task_3_vpc_sg_vm_2" {
     to_port           = 80
     protocol          = "tcp"
 
-    cidr_blocks       = ["${aws_instance.task_3_vm_1.private_ip}/32"]
+    cidr_blocks       = ["${aws_instance.task_3_extra_vm_1.private_ip}/32"]
   }
 
   ingress {
@@ -170,7 +170,7 @@ resource "aws_security_group" "task_3_vpc_sg_vm_2" {
     to_port           = 443
     protocol          = "tcp"
 
-    cidr_blocks       = ["${aws_instance.task_3_vm_1.private_ip}/32"]
+    cidr_blocks       = ["${aws_instance.task_3_extra_vm_1.private_ip}/32"]
   }
 
   ingress {
@@ -178,7 +178,7 @@ resource "aws_security_group" "task_3_vpc_sg_vm_2" {
     to_port           = -1
     protocol          = "icmp"
 
-    cidr_blocks       = ["${aws_instance.task_3_vm_1.private_ip}/32"]
+    cidr_blocks       = ["${aws_instance.task_3_extra_vm_1.private_ip}/32"]
   }
 
   egress {
@@ -189,15 +189,14 @@ resource "aws_security_group" "task_3_vpc_sg_vm_2" {
   }
 
   tags = {
-    Name          = "task_3_vpc_sg_vm_2"
+    Name          = "task_3_extra_vpc_sg_vm_2"
   }
 }
 
 
 # - EC2 instance --------------------------------
-resource "aws_instance" "task_3_vm_1" {
+resource "aws_instance" "task_3_extra_vm_1" {
   # OS info
-  # ami                           = "ami-052efd3df9dad4825"
   ami                           = var.VM_1_AMI_ID
   instance_type                 = "t2.micro"
 
@@ -206,10 +205,10 @@ resource "aws_instance" "task_3_vm_1" {
 
   # Networking
   associate_public_ip_address   = false
-  subnet_id                     = aws_subnet.task_3_vpc_subnet_main.id
+  subnet_id                     = aws_subnet.task_3_extra_vpc_subnet_main.id
 
   # Firewall
-  vpc_security_group_ids        = [aws_security_group.task_3_vpc_sg_vm_1.id]
+  vpc_security_group_ids        = [aws_security_group.task_3_extra_vpc_sg_vm_1.id]
 
   # Main disk drive
   root_block_device {
@@ -219,18 +218,17 @@ resource "aws_instance" "task_3_vm_1" {
 
 
   # Script to run when creating EC2 instance
-  user_data                     = var.task_3_vm_1_user_data
+  user_data                     = var.task_3_extra_vm_1_user_data
 
   # Tags
   tags = {
-    Name                        = "task-3-vm-1"
+    Name                        = "task-3-extra-vm-1"
     Payer                       = "exadel-tasks"
   }
 }
 
-resource "aws_instance" "task_3_vm_2" {
+resource "aws_instance" "task_3_extra_vm_2" {
   # OS info
-  # ami                           = "ami-00e87074e52e6c9f9"
   ami                           = var.VM_2_AMI_ID
   instance_type                 = "t2.micro"
 
@@ -239,10 +237,10 @@ resource "aws_instance" "task_3_vm_2" {
 
   # Networking
   associate_public_ip_address   = false
-  subnet_id                     = aws_subnet.task_3_vpc_subnet_main.id
+  subnet_id                     = aws_subnet.task_3_extra_vpc_subnet_main.id
 
   # Firewall
-  vpc_security_group_ids        = [aws_security_group.task_3_vpc_sg_vm_2.id]
+  vpc_security_group_ids        = [aws_security_group.task_3_extra_vpc_sg_vm_2.id]
 
   # Main disk drive
   root_block_device {
@@ -262,70 +260,38 @@ set -e
 SYSTEM_INFO_FILE_LOCATION="/usr/share/nginx/html/info.html"
 
 
-printf "\n#####################################################"
-printf "\n############## Disable IPv6 ... #####################"
-printf "\n#####################################################\n"
-
+# Disable IPv6
 sudo bash -c 'echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf'
 sudo bash -c 'echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf'
 sudo sysctl -p
 
 
 # Add proxy
-printf "\n#####################################################"
-printf "\n############## Add proxy for yum ... ################"
-printf "\n#####################################################\n\n"
-
-sudo bash -c 'echo "proxy=http://${ aws_instance.task_3_vm_1.private_ip }:3128" >> /etc/yum.conf'
+sudo bash -c 'echo "proxy=http://${ aws_instance.task_3_extra_vm_1.private_ip }:3128" >> /etc/yum.conf'
 
 
 # Update package index
-printf "\n#####################################################"
-printf "\n############## Updating packages ... ################"
-printf "\n#####################################################\n\n"
-
 sudo yum -y update
 
 
 # Upgrade all installed packages
-printf "\n#####################################################"
-printf "\n############## Upgrading packages ... ###############"
-printf "\n#####################################################\n\n"
-
 sudo yum -y upgrade
 
 
 # Install EPEL packages repository
-printf "\n#####################################################"
-printf "\n############## Install EPEL repository ... ##########"
-printf "\n#####################################################\n\n"
-
 sudo yum -y install epel-release
 
 
 # Install nginx web-server
-printf "\n#####################################################"
-printf "\n############## Installing nginx web server ... ######"
-printf "\n#####################################################\n\n"
-
 sudo yum -y install nginx
 
 
 # Start and enable nginx
-printf "\n#####################################################"
-printf "\n############## Installing nginx web server ... ######"
-printf "\n#####################################################\n\n"
-
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
 
 # Generate page with "Hello World" text
-printf "\n#####################################################"
-printf "\n############## Generating webpage with ##############"
-printf "\n############## Hello World text #####################"
-printf "\n#####################################################\n\n"
-
 # Empty info file
 echo "" > $SYSTEM_INFO_FILE_LOCATION
 
@@ -359,24 +325,20 @@ cat << EOF >> $SYSTEM_INFO_FILE_LOCATION
 
 EOF
 
-printf "\n#####################################################"
-printf "\n############## Done ... #############################"
-printf "\n#####################################################\n"
-
 EOL
 
   # Tags
   tags = {
-    Name                        = "task-3-vm-2"
+    Name                        = "task-3-extra-vm-2"
     Payer                       = "exadel-tasks"
   }
 }
 
 
 output "ec2_global_ips" {
-  value                         = ["${aws_eip.task_3_vm_1_eip_1.*.public_ip}"]
+  value                         = ["${aws_eip.task_3_extra_vm_1_eip_1.*.public_ip}"]
 }
 
 output "ec2_local_ips" {
-  value                         = ["${aws_eip.task_3_vm_1_eip_1.*.private_ip}"]
+  value                         = ["${aws_eip.task_3_extra_vm_1_eip_1.*.private_ip}"]
 }

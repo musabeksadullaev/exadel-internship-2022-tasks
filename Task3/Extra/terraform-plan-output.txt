@@ -5,8 +5,8 @@ Terraform used the selected providers to generate the following execution plan. 
 
 Terraform will perform the following actions:
 
-  # aws_eip.task_3_vm_1_eip_1 will be created
-  + resource "aws_eip" "task_3_vm_1_eip_1" {
+  # aws_eip.task_3_extra_vm_1_eip_1 will be created
+  + resource "aws_eip" "task_3_extra_vm_1_eip_1" {
       + allocation_id        = (known after apply)
       + association_id       = (known after apply)
       + carrier_ip           = (known after apply)
@@ -22,18 +22,18 @@ Terraform will perform the following actions:
       + public_ip            = (known after apply)
       + public_ipv4_pool     = (known after apply)
       + tags                 = {
-          + "Name"  = "task-3-vm-1"
+          + "Name"  = "task-3-extra-vm-1"
           + "Payer" = "exadel-tasks"
         }
       + tags_all             = {
-          + "Name"  = "task-3-vm-1"
+          + "Name"  = "task-3-extra-vm-1"
           + "Payer" = "exadel-tasks"
         }
       + vpc                  = true
     }
 
-  # aws_instance.task_3_vm_1 will be created
-  + resource "aws_instance" "task_3_vm_1" {
+  # aws_instance.task_3_extra_vm_1 will be created
+  + resource "aws_instance" "task_3_extra_vm_1" {
       + ami                                  = "ami-052efd3df9dad4825"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = false
@@ -67,15 +67,15 @@ Terraform will perform the following actions:
       + source_dest_check                    = true
       + subnet_id                            = (known after apply)
       + tags                                 = {
-          + "Name"  = "task-3-vm-1"
+          + "Name"  = "task-3-extra-vm-1"
           + "Payer" = "exadel-tasks"
         }
       + tags_all                             = {
-          + "Name"  = "task-3-vm-1"
+          + "Name"  = "task-3-extra-vm-1"
           + "Payer" = "exadel-tasks"
         }
       + tenancy                              = (known after apply)
-      + user_data                            = "7eac93cd093e85f0b71a0ac8319a583932893d01"
+      + user_data                            = "e435ac4a016b16f450a3129228938c5693cf5845"
       + user_data_base64                     = (known after apply)
       + user_data_replace_on_change          = false
       + vpc_security_group_ids               = (known after apply)
@@ -150,8 +150,8 @@ Terraform will perform the following actions:
         }
     }
 
-  # aws_instance.task_3_vm_2 will be created
-  + resource "aws_instance" "task_3_vm_2" {
+  # aws_instance.task_3_extra_vm_2 will be created
+  + resource "aws_instance" "task_3_extra_vm_2" {
       + ami                                  = "ami-00e87074e52e6c9f9"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = false
@@ -268,32 +268,32 @@ Terraform will perform the following actions:
         }
     }
 
-  # aws_internet_gateway.task_3_igw_1 will be created
-  + resource "aws_internet_gateway" "task_3_igw_1" {
+  # aws_internet_gateway.task_3_extra_igw_1 will be created
+  + resource "aws_internet_gateway" "task_3_extra_igw_1" {
       + arn      = (known after apply)
       + id       = (known after apply)
       + owner_id = (known after apply)
       + tags     = {
-          + "Name"  = "task-3-vm-1"
+          + "Name"  = "task-3-extra-vm-1"
           + "Payer" = "exadel-tasks"
         }
       + tags_all = {
-          + "Name"  = "task-3-vm-1"
+          + "Name"  = "task-3-extra-vm-1"
           + "Payer" = "exadel-tasks"
         }
       + vpc_id   = (known after apply)
     }
 
-  # aws_main_route_table_association.task_3_vpc_main_route_table will be created
-  + resource "aws_main_route_table_association" "task_3_vpc_main_route_table" {
+  # aws_main_route_table_association.task_3_extra_vpc_main_route_table will be created
+  + resource "aws_main_route_table_association" "task_3_extra_vpc_main_route_table" {
       + id                      = (known after apply)
       + original_route_table_id = (known after apply)
       + route_table_id          = (known after apply)
       + vpc_id                  = (known after apply)
     }
 
-  # aws_route_table.task_3_route_table_1 will be created
-  + resource "aws_route_table" "task_3_route_table_1" {
+  # aws_route_table.task_3_extra_route_table_1 will be created
+  + resource "aws_route_table" "task_3_extra_route_table_1" {
       + arn              = (known after apply)
       + id               = (known after apply)
       + owner_id         = (known after apply)
@@ -317,20 +317,20 @@ Terraform will perform the following actions:
             },
         ]
       + tags             = {
-          + "Name"  = "task-3-route-table-1"
+          + "Name"  = "task-3-extra-route-table-1"
           + "Payer" = "exadel-tasks"
         }
       + tags_all         = {
-          + "Name"  = "task-3-route-table-1"
+          + "Name"  = "task-3-extra-route-table-1"
           + "Payer" = "exadel-tasks"
         }
       + vpc_id           = (known after apply)
     }
 
-  # aws_security_group.task_3_vpc_sg_vm_1 will be created
-  + resource "aws_security_group" "task_3_vpc_sg_vm_1" {
+  # aws_security_group.task_3_extra_vpc_sg_vm_1 will be created
+  + resource "aws_security_group" "task_3_extra_vpc_sg_vm_1" {
       + arn                    = (known after apply)
-      + description            = "SG for VM 1"
+      + description            = "SG for VM 1 (Extra)"
       + egress                 = [
           + {
               + cidr_blocks      = [
@@ -414,7 +414,7 @@ Terraform will perform the following actions:
               + to_port          = 3128
             },
         ]
-      + name                   = "task_3_vpc_sg_vm_1"
+      + name                   = "task_3_extra_vpc_sg_vm_1"
       + name_prefix            = (known after apply)
       + owner_id               = (known after apply)
       + revoke_rules_on_delete = false
@@ -429,10 +429,10 @@ Terraform will perform the following actions:
       + vpc_id                 = (known after apply)
     }
 
-  # aws_security_group.task_3_vpc_sg_vm_2 will be created
-  + resource "aws_security_group" "task_3_vpc_sg_vm_2" {
+  # aws_security_group.task_3_extra_vpc_sg_vm_2 will be created
+  + resource "aws_security_group" "task_3_extra_vpc_sg_vm_2" {
       + arn                    = (known after apply)
-      + description            = "SG for VM 2"
+      + description            = "SG for VM 2 (Extra)"
       + egress                 = [
           + {
               + cidr_blocks      = [
@@ -495,21 +495,21 @@ Terraform will perform the following actions:
               + to_port          = 80
             },
         ]
-      + name                   = "task_3_vpc_sg_vm_2"
+      + name                   = "task_3_extra_vpc_sg_vm_2"
       + name_prefix            = (known after apply)
       + owner_id               = (known after apply)
       + revoke_rules_on_delete = false
       + tags                   = {
-          + "Name" = "task_3_vpc_sg_vm_2"
+          + "Name" = "task_3_extra_vpc_sg_vm_2"
         }
       + tags_all               = {
-          + "Name" = "task_3_vpc_sg_vm_2"
+          + "Name" = "task_3_extra_vpc_sg_vm_2"
         }
       + vpc_id                 = (known after apply)
     }
 
-  # aws_subnet.task_3_vpc_subnet_main will be created
-  + resource "aws_subnet" "task_3_vpc_subnet_main" {
+  # aws_subnet.task_3_extra_vpc_subnet_main will be created
+  + resource "aws_subnet" "task_3_extra_vpc_subnet_main" {
       + arn                                            = (known after apply)
       + assign_ipv6_address_on_creation                = false
       + availability_zone                              = (known after apply)
@@ -525,18 +525,18 @@ Terraform will perform the following actions:
       + owner_id                                       = (known after apply)
       + private_dns_hostname_type_on_launch            = (known after apply)
       + tags                                           = {
-          + "Name"  = "Task-3-VPC-Subnet-main"
+          + "Name"  = "Task-3-Extra-VPC-Subnet-main"
           + "Payer" = "exadel-tasks"
         }
       + tags_all                                       = {
-          + "Name"  = "Task-3-VPC-Subnet-main"
+          + "Name"  = "Task-3-Extra-VPC-Subnet-main"
           + "Payer" = "exadel-tasks"
         }
       + vpc_id                                         = (known after apply)
     }
 
-  # aws_vpc.task_3_vpc will be created
-  + resource "aws_vpc" "task_3_vpc" {
+  # aws_vpc.task_3_extra_vpc will be created
+  + resource "aws_vpc" "task_3_extra_vpc" {
       + arn                                  = (known after apply)
       + cidr_block                           = "10.0.10.0/24"
       + default_network_acl_id               = (known after apply)
@@ -555,11 +555,11 @@ Terraform will perform the following actions:
       + main_route_table_id                  = (known after apply)
       + owner_id                             = (known after apply)
       + tags                                 = {
-          + "Name"  = "Task-3-VPC"
+          + "Name"  = "Task-3-Extra-VPC"
           + "Payer" = "exadel-tasks"
         }
       + tags_all                             = {
-          + "Name"  = "Task-3-VPC"
+          + "Name"  = "Task-3-Extra-VPC"
           + "Payer" = "exadel-tasks"
         }
     }
@@ -581,5 +581,3 @@ Changes to Outputs:
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
-
-$ 
