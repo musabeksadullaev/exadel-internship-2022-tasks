@@ -32,10 +32,6 @@ Step 8:
 export AWS_SECRET_ACCESS_KEY="..."
 export AWS_ACCESS_KEY_ID="..."
 
-# AMI IDs for EC2 instances
-export TF_VAR_VM_1_AMI_ID="ami-052efd3df9dad4825"
-export TF_VAR_VM_2_AMI_ID="ami-00e87074e52e6c9f9"
-
 # Download dependencies and install providers
 terraform init
 

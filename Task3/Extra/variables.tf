@@ -1,10 +1,10 @@
-variable "VM_1_AMI_ID" {
-  type = string
-}
+# variable "VM_1_AMI_ID" {
+#   type = string
+# }
 
-variable "VM_2_AMI_ID" {
-  type = string
-}
+# variable "VM_2_AMI_ID" {
+#   type = string
+# }
 
 variable "task_3_extra_vm_1_user_data" {
   type = string

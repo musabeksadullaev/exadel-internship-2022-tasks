@@ -15,6 +15,37 @@ provider "aws" {
   region          = "us-east-1"
 }
 
+# - VPC -----------------------------------------
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners = ["099720109477"]  # Canonical
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
+data "aws_ami" "centos" {
+  most_recent = true
+  owners = ["125523088429"]  # CentOS
+
+  filter {
+    name   = "name"
+    values = ["CentOS 7.9.2009 x86_64"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
 
 # - VPC -----------------------------------------
 resource "aws_vpc" "task_3_extra_vpc" {
@@ -197,7 +228,7 @@ resource "aws_security_group" "task_3_extra_vpc_sg_vm_2" {
 # - EC2 instance --------------------------------
 resource "aws_instance" "task_3_extra_vm_1" {
   # OS info
-  ami                           = var.VM_1_AMI_ID
+  ami                           = data.aws_ami.ubuntu.id
   instance_type                 = "t2.micro"
 
   # Access management
@@ -229,7 +260,7 @@ resource "aws_instance" "task_3_extra_vm_1" {
 
 resource "aws_instance" "task_3_extra_vm_2" {
   # OS info
-  ami                           = var.VM_2_AMI_ID
+  ami                           = data.aws_ami.centos.id
   instance_type                 = "t2.micro"
 
   # Access management

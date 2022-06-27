@@ -1,4 +1,8 @@
 $ terraform plan
+data.aws_ami.centos: Reading...
+data.aws_ami.ubuntu: Reading...
+data.aws_ami.ubuntu: Read complete after 1s [id=ami-031cf125b681ca3e0]
+data.aws_ami.centos: Read complete after 1s [id=ami-00e87074e52e6c9f9]
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
@@ -34,7 +38,7 @@ Terraform will perform the following actions:
 
   # aws_instance.task_3_extra_vm_1 will be created
   + resource "aws_instance" "task_3_extra_vm_1" {
-      + ami                                  = "ami-052efd3df9dad4825"
+      + ami                                  = "ami-031cf125b681ca3e0"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = false
       + availability_zone                    = (known after apply)
@@ -185,11 +189,11 @@ Terraform will perform the following actions:
       + source_dest_check                    = true
       + subnet_id                            = (known after apply)
       + tags                                 = {
-          + "Name"  = "task-3-vm-2"
+          + "Name"  = "task-3-extra-vm-2"
           + "Payer" = "exadel-tasks"
         }
       + tags_all                             = {
-          + "Name"  = "task-3-vm-2"
+          + "Name"  = "task-3-extra-vm-2"
           + "Payer" = "exadel-tasks"
         }
       + tenancy                              = (known after apply)
