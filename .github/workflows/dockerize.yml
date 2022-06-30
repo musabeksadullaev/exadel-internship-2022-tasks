@@ -33,7 +33,7 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest ./Task4/Subtask4/
-        docker tag $DOCKER_USER/$DOCKER_IMAGE_NAME:latest $DOCKER_USER/$DOCKER_IMAGE_NAME:${GITHUB_SHA::7}
+        # docker tag $DOCKER_USER/$DOCKER_IMAGE_NAME:latest $DOCKER_USER/$DOCKER_IMAGE_NAME:${GITHUB_SHA::7}
 
     - name: Docker Push
       run: |
