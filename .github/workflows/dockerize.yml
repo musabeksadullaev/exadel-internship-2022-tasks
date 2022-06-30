@@ -1,6 +1,8 @@
 name: Login to Docker Hub, build image and send to Docker Hub
 
-on: [push]
+on:
+  - push
+  - workflow_dispatch
 
 env:
   DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
