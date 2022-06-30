@@ -1,0 +1,30 @@
+name: Login to Docker Hub, build image and send to Docker Hub
+
+on: [push]
+
+env:
+  DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+  DOCKERHUB_USERNAME: musabeksadullaev
+  DOCKER_IMAGE_NAME: exadel-tasks
+
+
+jobs:
+
+  build-and-push:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: docker login
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
+
+    - name: Build the Docker image # push The image to the docker hub
+      run: docker build -t $DOCKERHUB_USERNAME/DOCKER_IMAGE_NAME:latest .
+
+    - name: Docker Push
+      run: docker push $DOCKERHUB_USERNAME/DOCKER_IMAGE_NAME:latest
