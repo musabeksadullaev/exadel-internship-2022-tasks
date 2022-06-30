@@ -38,4 +38,3 @@ jobs:
     - name: Docker Push
       run: |
         docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:latest
-        docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:${CI_COMMIT_SHA:0:8}
