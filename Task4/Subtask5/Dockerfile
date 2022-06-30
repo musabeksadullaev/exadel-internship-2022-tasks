@@ -2,7 +2,7 @@ FROM maven:3.8.6-jdk-8 as build
 
 WORKDIR /app
 
-COPY ./src/* .
+COPY ./src/ /app
 
 RUN mvn install -DskipTests
 
