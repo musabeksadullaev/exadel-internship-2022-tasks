@@ -6,7 +6,7 @@ services:
     networks:
       - task-5
     ports:
-      - "80:80"
+      - "1000-1020:80"  # Max 20 replicas
     deploy:
       mode: replicated
       replicas: 5
