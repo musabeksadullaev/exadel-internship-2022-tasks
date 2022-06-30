@@ -2,7 +2,7 @@
 
 ## Task 2 (Extra)
 ### Result page
-:globe_with_meridians: http://34.202.132.160/info.html
+:globe_with_meridians: http://34.201.178.204/info.html
 
 
 ### Task details

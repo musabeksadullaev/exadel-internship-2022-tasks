@@ -2,12 +2,10 @@
 
 > :link: URL for repository: https://github.com/musabeksadullaev/exadel-internship-2022-tasks/tree/master/Task3
 
-<!-- > :green_circle: Completed: `yes` -->
-> :yellow_circle: Completed: `no`
+> :green_circle: Completed: `yes`
 
 
-<!-- > :alarm_clock: Completed time: `19/06/2022 @ 11:00 PM` -->
-> :alarm_clock: Completed time: `N/A`
+> :alarm_clock: Completed time: `27/06/2022 @ 04:55 PM`
 
 ---
 
