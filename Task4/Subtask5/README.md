@@ -9,8 +9,15 @@ Summary:
 - Maven will write output to `target/blog-api-docker.jar`
 - Docker will use OpenJDK (version 8, Ubuntu-based) to run compiled and built `blog-api-docker.jar` file
 - Built image will be pushed to Docker Hub:
-  - `docker login`  # Username and password will be prompted
+  - `docker login`  (**# Username and password will be prompted**)
+  - `docker build -t musabeksadullaev/exadel-internship-task-4-5 .`
   - `docker push musabeksadullaev/exadel-internship-task-4-5`
+- Run compose file with `docker-compose up -d` command
+- Create new post with next command:
+  - `curl -d '{"title": "Test Post", "post": "This POST request creates a Post"}' -H 'Content-Type: application/json' http://localhost:8080/posts`
+- Get all posts with command:
+  - `curl localhost:8080/posts`
+
 
 <!-- 
 ### :memo: Task details
