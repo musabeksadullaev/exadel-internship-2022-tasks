@@ -25,8 +25,13 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
 
+    - name: docker login
+      run: |
+        ls -laXh  || true
+        pwd
+
     - name: Build the Docker image # push The image to the docker hub
-      run: docker build -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest .
+      run: docker build -f ./Task4/Subtask4/Dockerfile -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest .
 
     - name: Docker Push
       run: docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:latest
