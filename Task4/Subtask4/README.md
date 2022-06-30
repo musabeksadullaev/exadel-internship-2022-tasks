@@ -7,8 +7,8 @@ Summary:
 - To push to and pull from Docker Hub need to [register](https://hub.docker.com/signup) in Docker Hub
 - Need to [create repository](https://docs.docker.com/docker-hub/#step-2-create-your-first-repository)
 - After registering need to:
-  - ```docker login -u <LOGIN/USERNAME> -p <PASSWORD>```  # login from Docker CLI
-  - ```docker image tag <REPO_NAME> <DOCKERHUB_USERNAME>/<REPO_NAME>```  # tag/rename image
+  - ```docker login```  # Login from Docker CLI (Username and password will be prompted)
+  - ```docker image tag <REPO_NAME> <DOCKERHUB_USERNAME>/<REPO_NAME>```  # Tag/rename image to make it pushable to registry
   - ```docker image push <DOCKERHUB_USERNAME>/<REPO_NAME>```  # Push (upload) image to Docker Hub
   - ```docker image pull <DOCKERHUB_USERNAME>/<REPO_NAME>```  # Pull (download) image from Docker Hub
 - More information you can find [here](https://docs.docker.com/docker-hub/)

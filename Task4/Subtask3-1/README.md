@@ -27,3 +27,8 @@ Create new container from `task-4-subtask-3-1` image and run it:
 ``` bash
 docker run -d -p 1000:80 --rm --name task-4-subtask-3-1 task-4-subtask-3-1
 ```
+
+Check if webserver working:
+``` bash
+curl localhost:1000
+```

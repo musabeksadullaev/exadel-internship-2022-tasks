@@ -9,8 +9,7 @@ services:
       - "80:80"
     deploy:
       mode: replicated
-      # replicas: 5
-      replicas: 1
+      replicas: 5
 
   java:
     image: musabeksadullaev/exadel-internship-task-4-5
