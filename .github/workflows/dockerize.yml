@@ -31,7 +31,9 @@ jobs:
         pwd
 
     - name: Build the Docker image
-      run: docker build -t $DOCKER_USER/$DOCKER_IMAGE_NAME:${CI_COMMIT_SHA:0:8} -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest ./Task4/Subtask4/
+      run: |
+        docker build -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest ./Task4/Subtask4/
+        docker tag $DOCKER_USER/$DOCKER_IMAGE_NAME:latest $DOCKER_USER/$DOCKER_IMAGE_NAME:${CI_COMMIT_SHA:0:8}
 
     - name: Docker Push
       run: |
