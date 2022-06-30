@@ -5,7 +5,6 @@ on: [push]
 env:
   DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
   DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-  DOCKERHUB_USERNAME: musabeksadullaev
   DOCKER_IMAGE_NAME: exadel-tasks
 
 
@@ -24,7 +23,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
 
     - name: Build the Docker image # push The image to the docker hub
-      run: docker build -t $DOCKERHUB_USERNAME/DOCKER_IMAGE_NAME:latest .
+      run: docker build -t $DOCKER_USER/DOCKER_IMAGE_NAME:latest .
 
     - name: Docker Push
-      run: docker push $DOCKERHUB_USERNAME/DOCKER_IMAGE_NAME:latest
+      run: docker push $DOCKER_USER/DOCKER_IMAGE_NAME:latest
