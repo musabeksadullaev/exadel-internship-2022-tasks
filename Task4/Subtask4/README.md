@@ -75,3 +75,6 @@ After running command above you will get response something like this:
 
 
 ## Task 4 (Extra)
+
+### :memo: Pipeline to build image on push
+> Pipeline can be found [here](https://github.com/musabeksadullaev/exadel-internship-2022-tasks/blob/master/.github/workflows/task-4-subtask-4-1.yml)
