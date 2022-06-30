@@ -34,5 +34,6 @@ jobs:
       run: docker build -t $DOCKER_USER/$DOCKER_IMAGE_NAME:${CI_COMMIT_SHA:0:8} -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest ./Task4/Subtask4/
 
     - name: Docker Push
-      run: docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:latest
-      run: docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:${CI_COMMIT_SHA:0:8}
+      run: |
+        docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:latest
+        docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:${CI_COMMIT_SHA:0:8}
