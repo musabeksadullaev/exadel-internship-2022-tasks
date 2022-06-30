@@ -13,7 +13,7 @@
 
 ### :link: [Sub-task 1](./Subtask1)
 ### :link: [Sub-task 2](./Subtask2)
-### :link: [Sub-task 3.1](./Subtask3.1)
-### :link: [Sub-task 3.2](./Subtask3.2)
+### :link: [Sub-task 3.1](./Subtask3-1)
+### :link: [Sub-task 3.2](./Subtask3-2)
 ### :link: [Sub-task 4](./Subtask4)
 ### :link: [Sub-task 5](./Subtask5)

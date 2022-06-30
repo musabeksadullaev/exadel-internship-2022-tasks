@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  app:
+    image: musabeksadullaev/exadel-tasks:latest
+    networks:
+      - task-5
+    deploy:
+      mode: replicated
+      # replicas: 5
+      replicas: 1
+
+  java:
+    image: musabeksadullaev/exadel-internship-task-4-5
+    container_name: exadel-internship-task-4-5
+    env_file: ./.env
+    depends_on:
+      - db
+    networks:
+      - task-5
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres:14.4-alpine
+    restart: always
+    container_name: task-5-db
+    networks:
+      - task-5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+
+
+networks:
+  task-5:
