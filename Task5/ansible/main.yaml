@@ -1,0 +1,164 @@
+---
+
+- name: "Install Docker and Docker compose"
+  hosts: targets
+  become: yes
+  vars:
+    USERNAME: "ubuntu"
+
+  tasks:
+  - name: "Define system name as variable"
+    register: SYSTEM_NAME
+    changed_when: "SYSTEM_NAME.rc != 0"
+    shell: "uname -s"
+
+  - name: "Define system architecture as variable"
+    register: SYSTEM_ARCH
+    changed_when: "SYSTEM_ARCH.rc != 0"
+    shell: "uname -m"
+
+  - name: "Install requirements"
+    apt:
+      update_cache: yes
+      state: "present"
+      pkg:
+      - "ca-certificates"
+      - "curl"
+      - "gnupg"
+      - "lsb-release"
+      - "python3-pip"
+      - "python3-setuptools"
+      - "virtualenv"
+
+  - name: "Add Docker GPG key"
+    ansible.builtin.apt_key:
+      url: "https://download.docker.com/linux/ubuntu/gpg"
+      state: "present"
+      keyring: "/usr/share/keyrings/docker-archive-keyring.gpg"
+
+  - name: "Define DPKG's system architecture as variables"
+    register: DPKG_ARCH
+    changed_when: "DPKG_ARCH.rc != 0"
+    shell: "dpkg --print-architecture"
+
+  - name: "Define variables (System version codename)"
+    register: SYSTEM_CODENAME
+    changed_when: "SYSTEM_CODENAME.rc != 0"
+    shell: "lsb_release -cs"
+
+  - name: "Add specified repository into sources list"
+    ansible.builtin.apt_repository:
+      repo: "deb [arch={{ DPKG_ARCH.stdout }} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ SYSTEM_CODENAME.stdout }} stable"
+      state: "present"
+
+  - name: "Install Docker"
+    apt:
+      update_cache: yes
+      state: "present"
+      pkg:
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+
+  - name: "Install Docker python package"
+    ansible.builtin.pip:
+      name: docker
+
+  - name: "Adding existing user 'user' to group 'docker'"
+    user:
+      name: "{{ USERNAME }}"
+      groups: "docker"
+      append: yes
+
+  - name: "Check if Docker Compose installed"
+    register: COMPOSE_EXISTS
+    changed_when: "COMPOSE_EXISTS.changed != false"
+    ansible.builtin.stat:
+      path: "/usr/local/bin/docker-compose"
+
+  - name: "Install Docker Compose"
+    when: not COMPOSE_EXISTS.stat.exists
+    get_url:
+      url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ SYSTEM_NAME.stdout }}-{{ SYSTEM_ARCH.stdout }}"
+      dest: "/usr/local/bin/docker-compose"
+      mode: '0755'
+
+  - name: "Test docker installation"
+    register: DOCKER_RUN_RESULT
+    changed_when: "DOCKER_RUN_RESULT.rc != 0 or DOCKER_RUN_RESULT.stderr != ''"
+    shell: "docker run --rm hello-world"
+
+
+# - name: "Run WordPress in Docker"
+#   hosts: targets
+#   become: yes
+#   vars:
+#     WORDPRESS_IMAGE_NAME: "wordpress:6.0.0-php8.1-apache"
+#     WORDPRESS_CONTAINER_NAME: "task-5-extra-1-wordpress"
+
+#     DATABASE_IMAGE_NAME: "mysql:5.7"
+#     DATABASE_CONTAINER_NAME: "task-5-extra-1-database"
+#     DATABASE_ROOT_PASSWORD: "highly_confidential_password"
+#     DATABASE_DB_NAME: "wordpress"
+#     DATABASE_USER_NAME: "wordpress"
+#     DATABASE_USER_PASSWORD: "secret_password"
+
+#   tasks:
+
+#     # Volumes
+#   - name: "Create a WordPress volume"
+#     community.docker.docker_volume:
+#       name: wordpress
+
+#   - name: "Create a MySQL volume"
+#     community.docker.docker_volume:
+#       name: db
+
+#   # - name: "Pull images"
+#   #   docker_image:
+#   #     name: "{{ WORDPRESS_IMAGE_NAME }}"
+
+
+
+#     # Containers
+#   - name: "Create WordPress container"
+#     # community.docker.docker_container:
+#     docker_container:
+#       image: "{{ WORDPRESS_IMAGE_NAME }}"
+#       name: "{{ WORDPRESS_CONTAINER_NAME }}"
+#       state: started
+#       auto_remove: true
+#       volumes:
+#       - "wordpress:/var/www/html"
+#       exposed_ports:
+#       - "80:80"
+#       published_ports:
+#       - "80:80"
+#       links:
+#       - "{{ DATABASE_CONTAINER_NAME }}:{{ DATABASE_CONTAINER_NAME }}"
+#       env:
+#         WORDPRESS_DB_HOST: "{{ DATABASE_CONTAINER_NAME }}"
+#         WORDPRESS_DB_NAME: "{{ DATABASE_DB_NAME }}"
+#         WORDPRESS_DB_USER: "{{ DATABASE_USER_NAME }}"
+#         WORDPRESS_DB_PASSWORD: "{{ DATABASE_USER_PASSWORD }}"
+
+#   - name: "Create MySQL database container"
+#     # community.docker.docker_container:
+#     docker_container:
+#       image: "{{ DATABASE_IMAGE_NAME }}"
+#       name: "{{ DATABASE_CONTAINER_NAME }}"
+#       state: started
+#       auto_remove: true
+#       volumes:
+#       - "db:/var/lib/mysql"
+#       exposed_ports:
+#       - "3386:3386"
+#       published_ports:
+#       - "3386:3386"
+#       links:
+#       - "{{ WORDPRESS_CONTAINER_NAME }}:{{ WORDPRESS_CONTAINER_NAME }}"
+#       env:
+#         MYSQL_DATABASE: "{{ DATABASE_DB_NAME }}"
+#         MYSQL_USER: "{{ DATABASE_USER_NAME }}"
+#         MYSQL_PASSWORD: "{{ DATABASE_USER_PASSWORD }}"
+#         MYSQL_RANDOM_ROOT_PASSWORD: "{{ DATABASE_ROOT_PASSWORD }}"
