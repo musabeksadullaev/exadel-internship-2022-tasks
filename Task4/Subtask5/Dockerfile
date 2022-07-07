@@ -1,10 +1,14 @@
 FROM maven:3.8.6-jdk-8 as build
 
+ENV PASSWORD
+
 WORKDIR /app
 
 COPY ./src/ /app
 
 RUN mvn install -DskipTests
+
+RUN echo $PASSWORD
 
 # ---------------------
 
