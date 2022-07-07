@@ -1,6 +1,6 @@
 FROM maven:3.8.6-jdk-8 as build
 
-ENV PASSWORD
+ENV PASSWORD default_password
 
 WORKDIR /app
 
