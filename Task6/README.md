@@ -173,7 +173,29 @@ Results of pipeline:
 
 ## Task 6 - Create Pipeline, which will build artifact using Dockerfile directly from your github repo (use Dockerfile from previous task).
 
+``` groovy
+pipeline {
+    agent { label 'agent1' }
+    stages {
+        stage('Build and push') {
+            steps {
+                sh '''
+                git clone https://github.com/musabeksadullaev/exadel-internship-2022-tasks
+
+                cd Task4/Subtask5
+                '''
+                
+                withCredentials([file(credentialsId: 'secret', variable: 'FILE')]) {
+                    sh 'docker build -e PASSWORD=$FILE -t musabeksadullaev/exadel-tasks:task-6-subtask-6 .'
+                }
+
+                sh 'docker push musabeksadullaev/exadel-tasks:task-6-subtask-6'
+
+            }
+        }
+    }
+}
+```
+
 
 ## Task 7 - Pass  variable PASSWORD=QWERTY! To the docker container. Variable must be encrypted!!!
-
-
