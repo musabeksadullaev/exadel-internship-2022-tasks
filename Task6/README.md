@@ -180,22 +180,30 @@ pipeline {
         stage('Build and push') {
             steps {
                 sh '''
+                rm -rf exadel-internship-2022-tasks
                 git clone https://github.com/musabeksadullaev/exadel-internship-2022-tasks
+                cd exadel-internship-2022-tasks/Task4/Subtask5
+                docker build -t musabeksadullaev/exadel-tasks:task-6-subtask-6 .
+                docker push musabeksadullaev/exadel-tasks:task-6-subtask-6
 
-                cd Task4/Subtask5
-                '''
+                DOCKER_HOST=tcp://172.16.105.135:4243/
                 
-                withCredentials([file(credentialsId: 'secret', variable: 'FILE')]) {
-                    sh 'docker build -e PASSWORD=$FILE -t musabeksadullaev/exadel-tasks:task-6-subtask-6 .'
+                '''
+                withCredentials([string(credentialsId: 'PASSWORD', variable: 'SEC_PASS')]) {
+                    sh '''
+                    docker run -d -e PASSWORD=$FILE musabeksadullaev/exadel-tasks:task-6-subtask-6
+                    '''
                 }
-
-                sh 'docker push musabeksadullaev/exadel-tasks:task-6-subtask-6'
-
+                sh '''
+                '''
             }
         }
     }
 }
+
 ```
 
 
 ## Task 7 - Pass  variable PASSWORD=QWERTY! To the docker container. Variable must be encrypted!!!
+
+Added environment variable will be printed when starting docker container

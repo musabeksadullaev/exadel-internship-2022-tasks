@@ -8,8 +8,6 @@ COPY ./src/ /app
 
 RUN mvn install -DskipTests
 
-RUN echo $PASSWORD
-
 # ---------------------
 
 FROM openjdk:8
@@ -17,6 +15,8 @@ FROM openjdk:8
 WORKDIR /app
 
 COPY --from=build /app/target/blog-api-docker.jar ./app.jar
+
+CMD echo $PASSWORD
 
 ENTRYPOINT ["java", "-jar","/app/app.jar"]
 
