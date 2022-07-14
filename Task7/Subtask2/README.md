@@ -85,7 +85,3 @@ Result:
 ## 4. Configure monitoring in ELK, get metrics from your running containers
 
 This task is completed in Task #2
-
-## 5. Study features and settings
-
-> 
