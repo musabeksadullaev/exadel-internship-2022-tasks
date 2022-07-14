@@ -153,6 +153,14 @@ resource "aws_security_group" "task_5_core_vpc_sg_vm_1" {
   }
 
   ingress {
+    from_port     = 4243
+    to_port       = 4243
+    protocol      = "tcp"
+
+    cidr_blocks   = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port     = -1
     to_port       = -1
     protocol      = "icmp"
@@ -220,6 +228,14 @@ resource "aws_security_group" "task_5_core_vpc_sg_vm_2" {
   }
 
   ingress {
+    from_port     = 4243
+    to_port       = 4243
+    protocol      = "tcp"
+
+    cidr_blocks   = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port     = -1
     to_port       = -1
     protocol      = "icmp"
@@ -281,6 +297,14 @@ resource "aws_security_group" "task_5_core_vpc_sg_vm_3" {
   ingress {
     from_port     = 10051
     to_port       = 10051
+    protocol      = "tcp"
+
+    cidr_blocks   = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port     = 4243
+    to_port       = 4243
     protocol      = "tcp"
 
     cidr_blocks   = ["0.0.0.0/0"]
